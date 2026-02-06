@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Yasmin ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff0f3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            z-index: 10;
+        }
+
+        h1 { color: #ff4d6d; }
+        p { color: #555; line-height: 1.6; }
+        
+        .buttons {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn { background-color: #ff4d6d; color: white; font-weight: bold; }
+        #noBtn { background-color: #adb5bd; color: white; position: relative; }
+
+        /* The Reveal Section */
+        #reveal {
+            display: none; 
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-photo {
+            width: 100%;
+            max-width: 380px;
+            border: 12px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-radius: 2px;
+            transform: rotate(-1deg);
+            margin: 20px 0;
+        }
+
+        .heart {
+            position: fixed;
+            color: #ffb3c1;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="loveSong" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hero" id="hero">
+        <div class="container">
+            <h1>Hi Yasmin... 😊</h1>
+            <p>I have a quick question for you.</p>
+            <div class="buttons">
+                <button id="yesBtn" onclick="showYasmin()">What is it?</button>
+                <button id="noBtn" onmouseover="moveButton()">Not interested</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="reveal">
+        <h1 style="font-size: 2.2rem; color: #ff4d6d;">Will you be my Valentine? ❤️</h1>
+        
+        <img src="yasmin_sand.png" alt="Yasmin sand photo" class="main-photo">
+        
+        <p style="font-size: 1.2rem; color: #444; margin-top: 20px;">
+            I really enjoy our time talking, and I'd love to make the 14th special with you.
+        </p>
+    </div>
+
+    <script>
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function showYasmin() {
+            const song = document.getElementById('loveSong');
+            song.play();
+            document.getElementById('hero').style.display = 'none';
+            document.getElementById('reveal').style.display = 'block';
+            setInterval(createHeart, 200);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+
+        setInterval(createHeart, 800);
+    </script>
+</body>
+</html>
